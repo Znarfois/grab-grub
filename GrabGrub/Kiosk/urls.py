@@ -24,4 +24,5 @@ urlpatterns = [
     # path('customer_details', views.customer_details, name='customer_details'),
     path('orderdetails', views.orderdetails, name='orderdetails'),
     path('addorder', views.addorder, name='addorder'),
+    path('create_user', views.create_user, name="create_user")
 ]

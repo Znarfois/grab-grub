@@ -13,9 +13,25 @@ def login(request):
             message = ""
             return redirect('home')
         else: 
+            # Used as an alternative to alerts
             message = "User unknown or incorrect password. Please try again."
         #     return render(request, 'Kiosk/login.html')
     return render(request, 'Kiosk/login.html', {'message': message})
+
+def create_user(request):
+    message = ""
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        if  User.objects.filter(username=username).exists():
+            message = "Account already exists"
+        else: 
+            # Used as an alternative to alerts
+            message = "Account Successfully created."
+            User.objects.create(username=username, password=password)
+            return render(request, 'Kiosk/login.html')
+    return render(request, 'Kiosk/create_user.html', {'message': message})
 
 def home(request):
     orders = Order.objects.all()

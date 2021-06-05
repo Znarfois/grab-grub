@@ -6,11 +6,10 @@
     <div class="container">
         <p>{{ message }}</p>
         <div class="form-container">
-            <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+            <form method="POST" action="{% url 'create_user' %}">{% csrf_token %}
                 Username: <input type="text" placeholder="Username" id="username" name="username"> <br/>
                 Password: <input type="password" placeholder="******" id="username" name="password"> <br/>
-                <input type="submit" value="Log In" id="login"> <br/>  
-                <button><a href="{% url 'create_user' %}">Create an account</a></button>
+                <input type="submit" value="Create Account" id="login"> <br/>
             </form>
             <br/>
         </div>
