@@ -38,10 +38,12 @@ def home(request):
     return render(request, 'Kiosk/home.html', { 'orders': orders })
 
 def view_customer(request):
-    return render(request, 'Kiosk/customer_details.html')
+    customers = Customer.objects.all()
+    return render(request, 'Kiosk/customer_details.html', { 'customers': customers })
 
 def view_food(request):
-    return render(request, 'Kiosk/view_food.html')
+    foods = Food.objects.all()
+    return render(request, 'Kiosk/food_details.html', { "foods": foods })
 
 def orderdetails(request):
     return render(request, 'Kiosk/orderdetails.html')
