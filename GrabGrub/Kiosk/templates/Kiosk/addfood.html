@@ -1,0 +1,34 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food</title>
+</head>
+<body>
+    {% block content %}
+    <form method="POST" action="{% url 'addfood' %}">{% csrf_token %}
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label for="description">Description: </label>
+            <input type="textbox" name="description" required>
+        </div>
+        <div >
+            <label for="price">Price: </label>
+            <input type="number" name="price" required>
+        </div>
+        <!-- <div>
+            <label for="created_at">Created at: </label>
+            <input type="datetime-local" name="created_at" value="" disabled>
+        </div> -->
+        <button type="submit">Submit</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

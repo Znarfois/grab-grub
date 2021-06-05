@@ -3,6 +3,10 @@
     src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 }
 
+nav {
+    display: none;
+}
+
 .container {
     display: flex;
     height: 50vh;

@@ -15,21 +15,28 @@
             <th>Quantity</th>
             <th>Ordered at</th>
             <th>Mode of Payment</th>
-            <th>Delete Order</th>
+            <th>Save Changes</th>
         </thead>
         
         <tbody>
-          {% for x in orders %}
-          <tr>
-            <td>{{ x.cust_order.name }}</td>
-            <td>{{ x.food.name }}</td>
-            <td>Quantity</td>
-            <td>{{ x.ordered_at }}</td>
-            <td>Mode of Payment</td>
-            <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
-          </tr>
+          {% for o in orders %}
+          <form method="POST" action="{% url 'orderdetails' pk=o.pk %}">{% csrf_token %}
+            <td>Name: <input type="text" placeholder="{{o.cust_order.name}}" disabled></td>
+            <td>Food: <input type="text" placeholder="{{o.food.name}}" disabled></td>
+            <td>Quantity: <input type="number" step="1" name="qty" value="{{o.qty}}"></td>
+            <td>Ordered at: <input type="text" placeholder="{{o.ordered_at}}" disabled></td>
+            <td>Payment Method: 
+              <select name="payment_mode" value="{{o.payment_mode}}">
+                <option {% if o.payment_mode == "Cash" %} selected {% endif %}>Cash</option>
+                <option {% if o.payment_mode == "Card" %} selected {% endif %}>Card</option>
+              </select>
+            </td>
+            <td><button type="submit">Update</button></td>
+        </form>
+        
           {% endfor %}
         </tbody>
+        
     </table>
     </div>
   </div> 

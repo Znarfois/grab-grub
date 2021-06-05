@@ -1,0 +1,28 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+
+{% block content %}
+    <h1>Food</h1>
+    <table id="orders">
+        <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Created At</th>
+            <th style="width: 10px;">Update</th>
+            <th style="width: 10px;">Delete</th>
+        </thead>
+        <tbody>
+          {% for f in foods %}
+          <tr>
+            <td>{{ f.name }}</td>
+            <td>{{ f.description }}</td>
+            <td>{{ f.price }}</td>
+            <td>{{ f.created_at }}</td>
+            <td style="text-align: center;"><a href="{% url 'food_details' pk=f.pk %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
+            <td style="text-align: center;"><a href="{% url 'delete_food' pk=f.pk %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

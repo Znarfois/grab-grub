@@ -36,8 +36,8 @@
               <td>{{ x.cust_order.name }}</td>
               <td>{{ x.food.name }}</td>
               <td>{{ x.ordered_at }}</td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'orderdetails' pk=x.pk %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'delete_order' pk=x.pk %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
             </tr>
             {% endfor %}
           </tbody>
