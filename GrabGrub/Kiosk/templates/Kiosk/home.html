@@ -24,7 +24,7 @@
     .bgimg {
       background-position: center;
       background-size: cover;
-      background-image: url(../../../static/img/grabbackground.jpg);
+      background-image: url(./static/img/grabbackground.jpg);
       min-height: 75%; 
     }
   </style>
@@ -50,8 +50,8 @@
               <td>{{ x.cust_order.name }}</td>
               <td>{{ x.food.name }}</td>
               <td>{{ x.ordered_at }}</td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="../../../static/img/detailsicon.png" class="icon"></a></td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="../../../static/img/deleteicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
             </tr>
             {% endfor %}
           </tbody>
