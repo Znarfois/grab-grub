@@ -37,8 +37,11 @@ def home(request):
     orders = Order.objects.all()
     return render(request, 'Kiosk/home.html', { 'orders': orders })
 
-# def customer_details(request):
-#     return render(request, 'Kiosk/customer_details.html')
+def view_customer(request):
+    return render(request, 'Kiosk/customer_details.html')
+
+def view_food(request):
+    return render(request, 'Kiosk/view_food.html')
 
 def orderdetails(request):
     return render(request, 'Kiosk/orderdetails.html')

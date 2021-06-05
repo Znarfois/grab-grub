@@ -28,6 +28,15 @@
         }
     </style>
 
+    <nav>
+        <p>GrabGrub</p>
+        <ul>
+            <li><a href="{% url 'home' %}">Orders</a></li>
+            <li><a href="{% url 'view_food' %}">Food Items</a></li>
+            <li><a href="{% url 'view_customer' %}">Customers</a></li>
+        </ul>
+    </nav>
+
     <body>
         <!-- Header with image -->
         <header class="bgimg w3-display-container w3-grayscale-min" id="home">

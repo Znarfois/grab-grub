@@ -21,8 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name='login'),
     path('home', views.home, name='home'),
-    # path('customer_details', views.customer_details, name='customer_details'),
+    path('customer_details', views.view_customer, name='view_customer'),
     path('orderdetails', views.orderdetails, name='orderdetails'),
     path('addorder', views.addorder, name='addorder'),
-    path('create_user', views.create_user, name="create_user")
+    path('create_user', views.create_user, name="create_user"),
+    path('food_items', views.view_food, name="view_food")
 ]
