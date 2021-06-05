@@ -1,0 +1,46 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add orders</title>
+</head>
+<body>
+    {% block content %}
+    <form method="POST" action="{% url 'addorder' %}">{% csrf_token %}
+        <div>
+            <label for="food">Food: </label>
+            <select name="food">
+                {% for f in food %}
+                <option value="{{f.pk}}">{{f.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="qty">Quantity: </label>
+            <input type="number" name="qty" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="ordered_at">Ordered at: </label>
+            <input type="datetime-local" name="date">
+        </div>
+        <div class="form-group">
+            <label for="cust">Customer</label>
+            <select name="cust" required>
+                {% for c in customers %}
+                <option value="{{c.pk}}">{{c.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="mode">Payment Method: </label>
+            <input type="text" name="mode" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+}
+
+#orders {
+    font-family: 'Montserrat', Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+#orders td, #orders th {
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+#orders tr:nth-child(even)
+{background-color: #f2f2f2;}
+
+#orders tr:hover {
+    background-color: #ddd;
+}
+
+#orders th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+.w3-display-middle w3-center {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+body {
+    background-color:white;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+}
+
+.button1 {
+    padding: 12px 56px;
+}
+
+.button2 {
+    padding: 12px 56px;
+}
+
+.icon {
+    max-width: 75%;
+    height: auto;
+}
