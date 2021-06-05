@@ -68,3 +68,8 @@ body {
     font-family: 'Montserrat', Helvetica, sans-serif;
     font-weight: 700;
 }
+
+.navbaricon {
+    width: 75%;
+    height: auto;
+}
