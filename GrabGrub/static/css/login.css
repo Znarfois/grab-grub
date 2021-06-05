@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+}
+
 .container {
     display: flex;
     height: 50vh;
@@ -41,4 +46,9 @@ p {
 a {
     text-decoration: none;
     color: #000000;
+}
+
+login-font {
+    font-family: 'Montserrat', Courier, monospace;
+    color: white;
 }

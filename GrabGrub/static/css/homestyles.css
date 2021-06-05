@@ -52,6 +52,7 @@ body {
 
 .button1 {
     padding: 12px 56px;
+    font-family: 'Montserrat', Helvetica, sans-serif;
 }
 
 .button2 {
@@ -61,4 +62,9 @@ body {
 .icon {
     max-width: 75%;
     height: auto;
+}
+
+.h4 {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 700;
 }

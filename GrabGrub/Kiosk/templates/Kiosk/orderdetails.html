@@ -1,12 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>orderdetails</title>
-</head>
-<body>
-    <p>it aint rocket science, but it sure feels like it :(</p>
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+
+{% block content %}
+
+<!-- customer, food, quantity, ordered at, and mode of payment -->
+
+<div class="w3-container" id="about">
+    <div class="w3-content" style="max-width:700px">
+      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE THE DETAILS OF YOUR ORDER</span></h1>
+      <table id="orders">
+        <thead>
+            <th>Customer</th>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Ordered at</th>
+            <th>Mode of Payment</th>
+            <th>Delete Order</th>
+        </thead>
+        
+        <tbody>
+          {% for x in orders %}
+          <tr>
+            <td>{{ x.cust_order.name }}</td>
+            <td>{{ x.food.name }}</td>
+            <td>Quantity</td>
+            <td>{{ x.ordered_at }}</td>
+            <td>Mode of Payment</td>
+            <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div> 
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+    <h4>THANK YOU FOR ORDERING WITH GRAB GRUB</h4>
+    <button class="button button1"><a href="{% url 'home' %}">Click here to go back to the home page</a></button>
+  </footer>
+  {% endblock %}
 </body>
 </html>
