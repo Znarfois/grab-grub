@@ -1,22 +1,20 @@
 {% extends 'Kiosk/base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/homestyles.css' %}"/>
-        <title>GrabGrub</title>
-    </head>
-
-    <body>
-        <form>
-            Username: <input type="text" placeholder="Username"><br>
-            Password: <input type="password" placeholder="******">
-        </form>
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <div class="container">
+        <p>{{ message }}</p>
+        <div class="form-container">
+            <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+                Username: <input type="text" placeholder="Username" id="username" name="username"> <br/>
+                Password: <input type="password" placeholder="******" id="username" name="password"> <br/>
+                <input type="submit" value="Log In" id="login"> <br/>
+                <button>Create an account</button>
+            </form>
+            <br/>
+        </div>
+        <br>
         
-    </body>
-
-</html>
+    </div>
+{% endblock %}

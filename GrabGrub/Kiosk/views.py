@@ -1,9 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import *
 from datetime import datetime
 
 def login(request):
-    return render(request, 'Kiosk/login.html')
+    message = ""
+
+    if request.method == 'POST':
+        un = request.POST.get('username')
+        pw = request.POST.get('password')
+        if  User.objects.filter(username=un, password=pw).exists():
+            message = ""
+            return redirect('home')
+        else: 
+            message = "User unknown or incorrect password. Please try again."
+        #     return render(request, 'Kiosk/login.html')
+    return render(request, 'Kiosk/login.html', {'message': message})
 
 def home(request):
     orders = Order.objects.all()
