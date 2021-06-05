@@ -20,7 +20,7 @@
             <td>{{ f.price }}</td>
             <td>{{ f.created_at }}</td>
             <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
-            <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+            <td style="text-align: center;"><a href="{% url 'delete_food' pk=f.pk %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
           </tr>
           {% endfor %}
         </tbody>

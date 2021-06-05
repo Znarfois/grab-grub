@@ -45,6 +45,14 @@ def view_food(request):
     foods = Food.objects.all()
     return render(request, 'Kiosk/food_details.html', { "foods": foods })
 
+def delete_food(request, pk):
+    Food.objects.filter(pk=pk).delete()
+    return redirect("view_food")
+
+def delete_customer(request, pk):
+    Customer.objects.filter(pk=pk).delete()
+    return redirect("view_customer")
+
 def orderdetails(request):
     return render(request, 'Kiosk/orderdetails.html')
 

@@ -18,7 +18,7 @@
             <td>{{ c.address }}</td>
             <td>{{ c.city }}</td>
             <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
-            <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+            <td style="text-align: center;"><a href="{% url 'delete_customer' pk=c.pk%}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
           </tr>
           {% endfor %}
         </tbody>

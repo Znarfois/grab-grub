@@ -25,5 +25,7 @@ urlpatterns = [
     path('orderdetails', views.orderdetails, name='orderdetails'),
     path('addorder', views.addorder, name='addorder'),
     path('create_user', views.create_user, name="create_user"),
-    path('food_items', views.view_food, name="view_food")
+    path('food_items', views.view_food, name="view_food"),
+    path('delete_food/<int:pk>/', views.delete_food, name="delete_food"),
+    path('delete_customer/<int:pk>/', views.delete_customer, name="delete_customer")
 ]
