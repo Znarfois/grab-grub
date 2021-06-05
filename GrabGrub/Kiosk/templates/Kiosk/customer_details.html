@@ -2,25 +2,43 @@
 {% load static %}
 
 {% block content %}
-    <h1>Customers</h1>
-    <table id="orders">
+
+<!-- customer, food, quantity, ordered at, and mode of payment -->
+
+<div class="w3-container" id="about">
+    <div class="w3-content" style="max-width:700px">
+      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE THE DETAILS OF YOUR ORDER</span></h1>
+      <table id="orders">
         <thead>
             <th>Name</th>
             <th>Address</th>
-            <th id>City</th>
-            <th style="width: 10px;">Update</th>
-            <th style="width: 10px;">Delete</th>
+            <th>City</th>
+            <th>Save Changes</th>
         </thead>
+        
         <tbody>
           {% for c in customers %}
-          <tr>
-            <td>{{ c.name }}</td>
-            <td>{{ c.address }}</td>
-            <td>{{ c.city }}</td>
-            <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
-            <td style="text-align: center;"><a href="{% url 'delete_customer' pk=c.pk%}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
-          </tr>
+          <form method="POST" action="{% url 'customer_details' pk=c.pk %}">{% csrf_token %}
+            <td>Name: <input type="text" value="{{c.name}}" name="name"></td>
+            <td>Address: <input type="textbox" name="address" value="{{c.address}}"></td>
+            <td>City: <input type="text" name="city" value="{{c.city}}"></td>
+            <td><button type="submit">Update</button></td>
+        </form>
+        
           {% endfor %}
         </tbody>
-    </table> 
-{% endblock %}
+        
+    </table>
+    </div>
+  </div> 
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+    <h4>THANK YOU FOR ORDERING WITH GRAB GRUB</h4>
+    <button class="button button1"><a href="{% url 'home' %}">Click here to go back to the home page</a></button>
+  </footer>
+  {% endblock %}
+</body>
+</html>

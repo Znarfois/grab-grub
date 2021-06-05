@@ -1,0 +1,26 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+
+{% block content %}
+    <h1>Customers</h1>
+    <table id="orders">
+        <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th id>City</th>
+            <th style="width: 10px;">Update</th>
+            <th style="width: 10px;">Delete</th>
+        </thead>
+        <tbody>
+          {% for c in customers %}
+          <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.address }}</td>
+            <td>{{ c.city }}</td>
+            <td style="text-align: center;"><a href="{% url 'customer_details' pk=c.pk %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
+            <td style="text-align: center;"><a href="{% url 'delete_customer' pk=c.pk %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

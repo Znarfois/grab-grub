@@ -39,7 +39,7 @@ def home(request):
 
 def view_customer(request):
     customers = Customer.objects.all()
-    return render(request, 'Kiosk/customer_details.html', { 'customers': customers })
+    return render(request, 'Kiosk/view_customer.html', { 'customers': customers })
 
 def view_food(request):
     foods = Food.objects.all()
@@ -53,9 +53,60 @@ def delete_customer(request, pk):
     Customer.objects.filter(pk=pk).delete()
     return redirect("view_customer")
 
-def orderdetails(request):
-    return render(request, 'Kiosk/orderdetails.html')
+def delete_order(request, pk):
+    Order.objects.filter(pk=pk).delete()
+    return redirect("home")
 
+def orderdetails(request, pk):
+    if request.method == 'POST':
+        qty = request.POST.get('qty')
+        payment_mode = request.POST.get('payment_mode')
+        Order.objects.filter(pk=pk).update(qty=qty, payment_mode=payment_mode)
+        message = "Successfully updated."
+        return redirect('orderdetails', pk=pk)
+
+    orders = Order.objects.filter(pk=pk)
+    return render(request, 'Kiosk/orderdetails.html', { "orders": orders })
+
+def customer_details(request, pk):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        city = request.POST.get('city')
+        Customer.objects.filter(pk=pk).update(name=name, address=address, city=city)
+        message = "Successfully updated."
+        return redirect('customer_details', pk=pk)
+
+    customers = Customer.objects.filter(pk=pk)
+    return render(request, 'Kiosk/customer_details.html', { "customers": customers })
+
+def food_details(request, pk):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        created_at = datetime.now()
+        Food.objects.filter(pk=pk).update(name=name, description=description, price=price, created_at=created_at)
+        message = "Successfully updated."
+        return redirect('food_details', pk=pk)
+
+    foods = Food.objects.filter(pk=pk)
+    return render(request, 'Kiosk/food_details.html', { "foods": foods })
+    
+def addfood(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        description = request.POST.get("description")
+        price = request.POST.get("price")
+        created_at = datetime.now()
+
+        Food.objects.create(name=name, description=description, price=price, created_at=created_at)
+        food = Food.objects.all()
+        return render(request, 'Kiosk/addfood.html', {'food': food})
+
+    else:
+        food = Food.objects.all()
+        return render(request, 'Kiosk/addfood.html', {'food': food})
 def addorder(request):
 
     if request.method == "POST":
