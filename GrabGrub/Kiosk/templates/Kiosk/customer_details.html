@@ -1,18 +1,45 @@
+{% extends 'Kiosk/base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/homestyles.css' %}"/>
-        <title>GrabGrub</title>
-    </head>
+{% block content %}
 
-    <body>
-        <h1>Hi, {}</h1>
-        
-    </body>
+<!-- customer, food, quantity, ordered at, and mode of payment -->
+<div class="row">
+  <div class="w3-container" id="about">
+    <div class="justify-content-center w-100">
+        <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >UPDATE CUSTOMER DETAILS</span></h1>
+        <table id="orders">
+          <thead>
+              <th>Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Save Changes</th>
+          </thead>
+          
+          <tbody>
+            {% for c in customers %}
+            <form method="POST" action="{% url 'customer_details' pk=c.pk %}">{% csrf_token %}
+              <td>Name: <input type="text" value="{{c.name}}" name="name"></td>
+              <td>Address: <input type="textbox" name="address" value="{{c.address}}"></td>
+              <td>City: <input type="text" name="city" value="{{c.city}}"></td>
+              <td><button type="submit">Update</button></td>
+          </form>
+          
+            {% endfor %}
+          </tbody>
+          
+      </table>
+    </div>
+  </div> 
+</div>
 
+  <!-- Footer -->
+ <div="row">
+  <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+
+    <button class="button button1"><a href="{% url 'home' %}">Click here to go back to the home page</a></button>
+  </footer>
+</div> 
+  {% endblock %}
+</body>
 </html>

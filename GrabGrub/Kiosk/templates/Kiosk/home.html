@@ -18,7 +18,7 @@
   
   <body>
     {% block content %}
-
+  <div class="row">
     <div class="w3-container" id="about">
       <div class="w3-content" style="max-width:700px">
         <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE YOUR ORDERS</span></h1>
@@ -36,21 +36,21 @@
               <td>{{ x.cust_order.name }}</td>
               <td>{{ x.food.name }}</td>
               <td>{{ x.ordered_at }}</td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
-              <td style="text-align: center;"><a href="{% url 'orderdetails' %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'orderdetails' pk=x.pk %}"><img src="./static/img/detailsicon.png" class="icon"></a></td>
+              <td style="text-align: center;"><a href="{% url 'delete_order' pk=x.pk %}"><img src="./static/img/deleteicon.png" class="icon"></a></td>
             </tr>
             {% endfor %}
           </tbody>
       </table>
       </div>
     </div> 
-
-    </div>
-
+  </div>
     <!-- Footer -->
+  <div class="row">
     <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-      <button class="button button1" style="font-family: 'Comfortaa';"><a href="{% url 'addorder' %}">Add Order</a></button>
+      <button class="button button1" style="font-family: 'Comfortaa'; color: white;"><a href="{% url 'addorder' %}">Add Order</a></button>
     </footer>
+  </div>
     {% endblock %}
   </body>
 </html>

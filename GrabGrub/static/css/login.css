@@ -3,6 +3,10 @@
     src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 }
 
+#nav {
+    display: none !important;
+}
+
 .container {
     display: flex;
     height: 50vh;
@@ -41,6 +45,11 @@ p {
     justify-content: center;
     color: rgb(216, 71, 71);
     font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
 }
 
 login-font {

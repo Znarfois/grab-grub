@@ -70,7 +70,7 @@ class Order (models.Model):
     qty = models.FloatField(max_length=100)
     ordered_at = models.DateTimeField()
     cust_order = models.ForeignKey(Customer,on_delete=models.CASCADE)
-    payment_mode = models.CharField(max_length=4)
+    payment_mode = models.CharField(max_length=100)
     objects = models.Manager()
 
     #Defining methods

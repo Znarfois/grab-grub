@@ -1,0 +1,50 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+
+{% block content %}
+
+<!-- customer, food, quantity, ordered at, and mode of payment -->
+<div class="row">
+  <div class="w3-container" id="about">
+    <div class="justify-content-center w-100">
+      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE YOUR ORDERS</span></h1>
+      <table id="orders">
+        <thead>
+            <th>Order</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Date Created</th>
+            <th style="width: 10px;">Update</th>
+            
+        </thead>
+        
+        <tbody>
+          {% for f in foods %}
+          <form method="POST" action="{% url 'food_details' pk=f.pk %}">{% csrf_token %}
+          <tr>
+            <td>Name: <input type="text" value="{{f.name}}" name="name"></td>
+            <td>Description: <input type="textbox" name="description" value="{{f.description}}"></td>
+            <td>Price: <input type="number" name="price" value="{{f.price}}"></td>
+            <!-- Created at updates when it is edited -->
+            <td>Created at: <input type="datetime" name="created_at" value="{{f.created_at}}" disabled> </td>
+            <td><button type="submit">Update</button></td>
+          </tr>
+          </form>
+          {% endfor %}
+        </tbody>
+        
+    </table>
+    </div>
+  </div> 
+</div>
+
+  <!-- Footer -->
+  <div class="row">
+    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+      <h4 style="font-family: 'Comfortaa'; color: black; font-weight: 700;"> THANK YOU FOR ORDERING WITH GRAB GRUB</h4>
+    </footer>
+  </div>
+
+  {% endblock %}
+</body>
+</html>

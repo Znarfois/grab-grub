@@ -1,0 +1,18 @@
+{% extends 'Kiosk/base.html'%}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <div class="container">
+        <p>{{ message }}</p>
+        <div class="form-container">
+            <form method="POST" action="{% url 'create_user' %}">{% csrf_token %}
+                Username: <input type="text" placeholder="Username" id="username" name="username"> <br/>
+                Password: <input type="password" placeholder="******" id="username" name="password"> <br/>
+                <input type="submit" value="Create Account" id="login"> <br/>
+            </form>
+            <br/>
+        </div>
+        <br>
+    </div>
+{% endblock %}
