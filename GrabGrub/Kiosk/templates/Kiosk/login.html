@@ -10,7 +10,7 @@
             <div class="login-font"></div>
                 <form method="POST" action="{% url 'login' %}">{% csrf_token %}
                     Username: <input type="text" placeholder="Username" id="username" name="username"> <br/>
-                    Password: <input type="password" placeholder="******" id="username" name="password"> <br/>
+                    Password: <input type="password" placeholder="******" id="password" name="password"> <br/>
                     <input type="submit" value="Log In" id="login"> <br/>
                     <button><a href="{% url 'create_user' %}">Create an account</a></button>
                 </form>
