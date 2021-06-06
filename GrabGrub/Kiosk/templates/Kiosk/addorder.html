@@ -1,46 +1,77 @@
 {% extends 'Kiosk/base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add orders</title>
-</head>
+
 <body>
     {% block content %}
+
+    <div class="row">
+        <div class="w3-container" id="about">
+          <div class="justify-content-center w-100">
+            <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >WHAT ARE YOUR ORDERS?</span></h1>
+            <table id="orders">
+                <thead>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Date Ordered</th>
+                    <th>Customer</th>
+                    <th>Payment Method</th>
+                    <th>Submit Button</th>
+                </thead>
+
+              
+
+               
+<tbody>
     <form method="POST" action="{% url 'addorder' %}">{% csrf_token %}
-        <div>
-            <label for="food">Food: </label>
-            <select name="food">
-                {% for f in food %}
-                <option value="{{f.pk}}">{{f.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="qty">Quantity: </label>
-            <input type="number" name="qty" min="1" required>
-        </div>
-        <div class="form-group">
-            <label for="ordered_at">Ordered at: </label>
-            <input type="datetime-local" name="date">
-        </div>
-        <div class="form-group">
-            <label for="cust">Customer</label>
-            <select name="cust" required>
-                {% for c in customers %}
-                <option value="{{c.pk}}">{{c.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
+        
+        <td>
+            <div>
+                <label for="food">Food: </label>
+                <select name="food">
+                    {% for f in food %}
+                    <option value="{{f.pk}}">{{f.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+                <label for="qty">Quantity: </label>
+                <input type="number" name="qty" min="1" required>
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+                <label for="ordered_at">Ordered at: </label>
+                <input type="datetime-local" name="date">
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+                <label for="cust">Customer</label>
+                <select name="cust" required>
+                    {% for c in customers %}
+                    <option value="{{c.pk}}">{{c.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </td>
+
+        <td>
         <div>
             <label for="mode">Payment Method: </label>
             <input type="text" name="mode" required>
         </div>
+        </td>
+        
+        <td>
         <button type="submit">Submit</button>
+        </td>
     </form>
     {% endblock %}
-</body>
+    </tbody>
+</table>
 </html>

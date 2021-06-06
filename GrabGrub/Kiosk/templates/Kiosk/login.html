@@ -1,13 +1,50 @@
-{% extends 'Kiosk/base.html'%}
-{% load static %}
 
-{% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Home Page</title>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/homestyles.css' %}">
+    
+            <link rel="stylesheet"  href="{% static 'css/bootstrap-5.0.0-beta2-dist/css/bootstrap.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        </head>
+    
+        <style>
+            body, html {
+            height: 100%;
+            }
+    
+            .bgimg {
+            background-position: center;
+            background-size: cover;
+            background-image: url(../static/img/grabbackground.jpg);
+            min-height: 75%; 
+            }
+        </style>
+    
+    <body>
+        <!-- Header with image -->
+        <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+            <div class="w3-display-middle w3-center">
+                <div style="text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;">
+                <span class="w3-text-white" style="font-size:90px; font-family: 'Comfortaa', Helvetica, sans-serif;">Welcome to<br>Grab Grub</span>
+                </div>
+            </div>
+        </header>
 
     <div class="container">
-        <p style="font-family: 'Montserrat', Helvetica, sans-serif;">{{ message }}</p>
+        <p style="font-family: 'Montserrat', Times, serif">{{ message }}</p>
         <div class="form-container">
-            <div class="login-font"></div>
+            <div class="login-font">
                 <form method="POST" action="{% url 'login' %}">{% csrf_token %}
                     Username: <input type="text" placeholder="Username" id="username" name="username"> <br/>
                     Password: <input type="password" placeholder="******" id="username" name="password"> <br/>
@@ -19,4 +56,3 @@
         </div>
         <br>
     </div>
-{% endblock %}

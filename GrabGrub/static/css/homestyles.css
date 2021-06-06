@@ -73,3 +73,8 @@ body {
     width: 75%;
     height: auto;
 }
+
+a {
+    text-decoration: none !important;
+    color: white !important;
+}

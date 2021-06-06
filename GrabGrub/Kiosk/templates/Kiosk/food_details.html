@@ -4,17 +4,18 @@
 {% block content %}
 
 <!-- customer, food, quantity, ordered at, and mode of payment -->
-
-<div class="w3-container" id="about">
-    <div class="w3-content" style="max-width:700px">
-      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE THE DETAILS OF YOUR ORDER</span></h1>
+<div class="row">
+  <div class="w3-container" id="about">
+    <div class="justify-content-center w-100">
+      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE YOUR ORDERS</span></h1>
       <table id="orders">
         <thead>
-            <th>Name</th>
+            <th>Order</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Created at</th>
-            <th>Save Changes</th>
+            <th>Date Created</th>
+            <th style="width: 10px;">Update</th>
+            
         </thead>
         
         <tbody>
@@ -35,14 +36,15 @@
     </table>
     </div>
   </div> 
-
-  </div>
+</div>
 
   <!-- Footer -->
-  <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-    <button class="button button1" style="font-family: 'Comfortaa';"><a href="{% url 'addfood' %}">Add Food</a></button><br>
-    <button class="button button1"><a href="{% url 'home' %}">Click here to go back to the home page</a></button>
-  </footer>
+  <div class="row">
+    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+      <h4 style="font-family: 'Comfortaa'; color: black; font-weight: 700;"> THANK YOU FOR ORDERING WITH GRAB GRUB</h4>
+    </footer>
+  </div>
+
   {% endblock %}
 </body>
 </html>

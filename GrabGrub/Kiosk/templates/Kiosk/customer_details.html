@@ -4,41 +4,42 @@
 {% block content %}
 
 <!-- customer, food, quantity, ordered at, and mode of payment -->
-
-<div class="w3-container" id="about">
-    <div class="w3-content" style="max-width:700px">
-      <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >HERE ARE THE DETAILS OF YOUR ORDER</span></h1>
-      <table id="orders">
-        <thead>
-            <th>Name</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Save Changes</th>
-        </thead>
-        
-        <tbody>
-          {% for c in customers %}
-          <form method="POST" action="{% url 'customer_details' pk=c.pk %}">{% csrf_token %}
-            <td>Name: <input type="text" value="{{c.name}}" name="name"></td>
-            <td>Address: <input type="textbox" name="address" value="{{c.address}}"></td>
-            <td>City: <input type="text" name="city" value="{{c.city}}"></td>
-            <td><button type="submit">Update</button></td>
-        </form>
-        
-          {% endfor %}
-        </tbody>
-        
-    </table>
+<div class="row">
+  <div class="w3-container" id="about">
+    <div class="justify-content-center w-100">
+        <h1 class="w3-center w3-padding-64"><span style="font-family: 'Montserrat';" >UPDATE CUSTOMER DETAILS</span></h1>
+        <table id="orders">
+          <thead>
+              <th>Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Save Changes</th>
+          </thead>
+          
+          <tbody>
+            {% for c in customers %}
+            <form method="POST" action="{% url 'customer_details' pk=c.pk %}">{% csrf_token %}
+              <td>Name: <input type="text" value="{{c.name}}" name="name"></td>
+              <td>Address: <input type="textbox" name="address" value="{{c.address}}"></td>
+              <td>City: <input type="text" name="city" value="{{c.city}}"></td>
+              <td><button type="submit">Update</button></td>
+          </form>
+          
+            {% endfor %}
+          </tbody>
+          
+      </table>
     </div>
   </div> 
-
-  </div>
+</div>
 
   <!-- Footer -->
+ <div="row">
   <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
     <h4>THANK YOU FOR ORDERING WITH GRAB GRUB</h4>
     <button class="button button1"><a href="{% url 'home' %}">Click here to go back to the home page</a></button>
   </footer>
+</div> 
   {% endblock %}
 </body>
 </html>
